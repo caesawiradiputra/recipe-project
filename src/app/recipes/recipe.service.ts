@@ -44,6 +44,16 @@ export class RecipeService {
     this.recipes[idRecipe] = recipe;
   }
 
+  addRecipeItem(recipe: Recipe) {
+    this.recipes.push(recipe);
+  }
+
+  deleteRecipeItem(id: number) {
+    // console.log("deleteRecipeItem works | id = " + id);
+    this.recipes.splice(id, 1);
+    // console.log(this.recipes.length);
+  }
+
   getRecipe(index: number) {
     return this.recipes[index];
   }
