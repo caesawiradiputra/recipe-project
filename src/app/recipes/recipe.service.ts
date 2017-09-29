@@ -3,11 +3,13 @@ import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
 import { shoppingListService } from '../shopping-list/shopping-list.service';
 import { FormGroup } from '@angular/forms';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class RecipeService {
 
   recipeSelected = new EventEmitter<Recipe>();
+  startEditing = new Subject<Recipe>();
 
   constructor(private shoppingListService: shoppingListService) { }
 
@@ -38,6 +40,10 @@ export class RecipeService {
     this.shoppingListService.addIngredients(ingredients);
   }
 
+  editRecipeItem(idRecipe: number, recipe: Recipe) {
+    this.recipes[idRecipe] = recipe;
+  }
+
   getRecipe(index: number) {
     return this.recipes[index];
   }
@@ -46,10 +52,12 @@ export class RecipeService {
     return this.recipes[idRecipe].ingredients[idIngredient];
   }
 
-  editRecipeIngredient(idRecipe: number, idIngredient: number, newIngredient: Ingredient) {
-    console.log("editRecipeIngredient works");
-    this.recipes[idRecipe].ingredients[idIngredient].name = newIngredient.name;
-    this.recipes[idRecipe].ingredients[idIngredient].amount = newIngredient.amount;
+  addEmptyRecipeIngredient(idRecipe: number) {
+    this.recipes[idRecipe].ingredients.push(new Ingredient('new', 0));
+  }
+
+  deleteRecipeIngredient(idRecipe: number, idIngredient: number) {
+    this.recipes[idRecipe].ingredients.splice(idIngredient, 1);
   }
 
 }
