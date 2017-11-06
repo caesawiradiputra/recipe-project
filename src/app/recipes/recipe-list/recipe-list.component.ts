@@ -2,6 +2,8 @@ import { Component, OnInit, Output } from '@angular/core'; // EventEmitter
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-recipe-list',
@@ -13,7 +15,9 @@ export class RecipeListComponent implements OnInit {
 
   constructor(private recipeService: RecipeService,
             private router: Router,
-            private route: ActivatedRoute) { }
+            private route: ActivatedRoute,
+            private httpClient: HttpClient,
+            private http: Http) { }
 
   ngOnInit() {
     this.recipes = this.recipeService.getRecipes();
@@ -32,6 +36,25 @@ export class RecipeListComponent implements OnInit {
 
   onNewRecipe() {
     this.router.navigate(['new'], {relativeTo: this.route}); 
+  }
+
+  data: string[];
+  dataJson: Response;
+  dataString: string;
+
+  onTestJson() {
+
+    this.httpClient.get("http://localhost:8080/user/")
+      .subscribe(
+        (response: Response) => {
+          console.log('start http get');
+          this.dataString = "testJson";
+          this.dataJson = response['content'];
+          console.log(this.dataJson);
+          
+        }
+      );
+
   }
 
 }

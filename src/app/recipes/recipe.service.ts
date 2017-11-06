@@ -4,6 +4,8 @@ import { Ingredient } from '../shared/ingredient.model';
 import { shoppingListService } from '../shopping-list/shopping-list.service';
 import { FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
+import { Http, Response } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class RecipeService {
@@ -11,7 +13,8 @@ export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
   startEditing = new Subject<Recipe>();
 
-  constructor(private shoppingListService: shoppingListService) { }
+  constructor(private shoppingListService: shoppingListService,
+        private http: Http) { }
 
   private recipes: Recipe[] = [
     new Recipe(
@@ -68,6 +71,20 @@ export class RecipeService {
 
   deleteRecipeIngredient(idRecipe: number, idIngredient: number) {
     this.recipes[idRecipe].ingredients.splice(idIngredient, 1);
+  }
+
+  testGetJson() {
+    let res: Response;
+
+    this.http.get("http://localhost:8080/user/")
+      .map(
+        (response: Response) => {
+          console.log(response);
+          res = response.json()['content'];
+        }
+      );
+
+    return res;
   }
 
 }

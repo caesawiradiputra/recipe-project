@@ -3,6 +3,14 @@
     <!-- <button routerLink="new" class="btn btn-success">New Recipe</button> -->
     <button class="btn btn-success" (click)="onNewRecipe()">New Recipe</button>
   </div>
+  <div class="col-xs-12">
+    <!-- <button routerLink="new" class="btn btn-success">New Recipe</button> -->
+    <button class="btn btn-success" (click)="onTestJson()">Test Json</button>
+    <span>{{dataString}}</span>
+    <div class="row" *ngFor="let data of dataJson">
+      {{data}}
+    </div>
+  </div>
 </div>
 <hr>
 <div class="row">
