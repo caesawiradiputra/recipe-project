@@ -1,5 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core'; // EventEmitter
-import { Recipe } from '../recipe.model';
+import { Recipe, User } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -39,22 +39,26 @@ export class RecipeListComponent implements OnInit {
   }
 
   data: string[];
-  dataJson: Response;
+  dataJson: User[];
   dataString: string;
 
   onTestJson() {
 
-    this.httpClient.get("http://localhost:8080/user/")
-      .subscribe(
-        (response: Response) => {
-          console.log('start http get');
-          this.dataString = "testJson";
-          this.dataJson = response['content'];
-          console.log(this.dataJson);
+    // this.httpClient.get("http://localhost:8080/api/user/")
+    //   .subscribe(
+    //     (response: Response) => {
+    //       console.log('start http get');
+    //       this.dataString = "testJson";
+    //       this.dataJson = response['content'];
+    //       console.log(this.dataJson[0].parse);
           
-        }
-      );
+    //     }
+    //   );
 
+    this.dataJson = this.recipeService.getUserWithGetProperty();
+
+    console.log('onTestJson');
+    console.log(this.dataJson);
   }
 
 }

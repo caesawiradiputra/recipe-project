@@ -8,7 +8,30 @@
     <button class="btn btn-success" (click)="onTestJson()">Test Json</button>
     <span>{{dataString}}</span>
     <div class="row" *ngFor="let data of dataJson">
-      {{data}}
+      <div col-xs-12>
+        {{data.userid}}
+      </div>
+      <div col-xs-12>
+        {{data.password}}
+      </div>
+      <div col-xs-12>
+        {{data.username}}
+      </div>
+      <div col-xs-12>
+        {{data.active}}
+      </div>
+      <div col-xs-12>
+        {{data.jobgroup}}
+      </div>
+      <div col-xs-12>
+        {{data.deptid}}
+      </div>
+      <div col-xs-12>
+        {{data.branchid}}
+      </div>
+      <div col-xs-12>
+        {{data.lastlogin}}
+      </div>
     </div>
   </div>
 </div>
