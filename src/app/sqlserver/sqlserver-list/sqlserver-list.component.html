@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-7">
+    <span>TEST SQL SERVER</span>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-7">
+    <!-- <button routerLink="new" class="btn btn-success">New Recipe</button> -->
+    <button class="btn btn-success" (click)="getAllUsers()">List All Users</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-7">      
+      <app-sqlserver-item *ngFor="let user of users" [user]="user"></app-sqlserver-item>
+  </div>
+</div>

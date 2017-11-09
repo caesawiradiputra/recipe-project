@@ -3,37 +3,6 @@
     <!-- <button routerLink="new" class="btn btn-success">New Recipe</button> -->
     <button class="btn btn-success" (click)="onNewRecipe()">New Recipe</button>
   </div>
-  <div class="col-xs-12">
-    <!-- <button routerLink="new" class="btn btn-success">New Recipe</button> -->
-    <button class="btn btn-success" (click)="onTestJson()">Test Json</button>
-    <span>{{dataString}}</span>
-    <div class="row" *ngFor="let data of dataJson">
-      <div col-xs-12>
-        {{data.userid}}
-      </div>
-      <div col-xs-12>
-        {{data.password}}
-      </div>
-      <div col-xs-12>
-        {{data.username}}
-      </div>
-      <div col-xs-12>
-        {{data.active}}
-      </div>
-      <div col-xs-12>
-        {{data.jobgroup}}
-      </div>
-      <div col-xs-12>
-        {{data.deptid}}
-      </div>
-      <div col-xs-12>
-        {{data.branchid}}
-      </div>
-      <div col-xs-12>
-        {{data.lastlogin}}
-      </div>
-    </div>
-  </div>
 </div>
 <hr>
 <div class="row">

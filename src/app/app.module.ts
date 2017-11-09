@@ -19,6 +19,10 @@ import { shoppingListService } from './shopping-list/shopping-list.service';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { SqlserverComponent } from './sqlserver/sqlserver.component';
+import { SqlserverListComponent } from './sqlserver/sqlserver-list/sqlserver-list.component';
+import { SqlserverService } from './sqlserver/sqlserver.service';
+import { SqlserverItemComponent } from './sqlserver/sqlserver-list/sqlserver-item/sqlserver-item.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,10 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     RecipeItemComponent,
     DropDownDirective,
     RecipeStartComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    SqlserverComponent,
+    SqlserverListComponent,
+    SqlserverItemComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +49,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     HttpClientModule,
     HttpModule
   ],
-  providers: [RecipeService, shoppingListService],
+  providers: [RecipeService, shoppingListService, SqlserverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

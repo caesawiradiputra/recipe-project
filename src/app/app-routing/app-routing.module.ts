@@ -6,6 +6,7 @@ import { shoppingListComponent } from '../shopping-list/shopping-list.component'
 import { RecipeStartComponent } from '../recipes/recipe-start/recipe-start.component';
 import { RecipeDetailComponent } from '../recipes/recipe-detail/recipe-detail.component';
 import { RecipeEditComponent } from '../recipes/recipe-edit/recipe-edit.component';
+import { SqlserverComponent } from '../sqlserver/sqlserver.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full'},
@@ -17,6 +18,7 @@ const appRoutes: Routes = [
     // {path: ":id/:idIngredient", component: RecipeEditComponent}
   ]},
   { path: 'shopping-list', component: shoppingListComponent},
+  { path: 'sql-server', component: SqlserverComponent},
   { path: '**', component: RecipesComponent}
 ];
 
